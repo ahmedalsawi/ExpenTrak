@@ -23,7 +23,7 @@ const limiter = rateLimit({
 
 // Routes
 app.get('/', (req, res) => res.send('Hello World!'));
-app.use('/api/transactions', require('./transactions'));
+app.use('/api', require('./core'));
 
 // Static routes
 app.use(express.static('public'));
