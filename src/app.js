@@ -23,6 +23,7 @@ app.use(limiter);
 
 // Routes
 app.get('/', (req, res) => res.send('Hello World!'));
+app.use('/api/transactions', require('./transactions'));
 
 // Static routes
 app.use(express.static('public'));
@@ -31,6 +32,13 @@ app.use(express.static('public'));
 
 // Start the server
 const port = 3000;
-app.listen(port, () =>
-  console.log(`Example app listening at http://localhost:${port}`)
-);
+mongoose
+  .connect('mongodb://localhost:27017/test', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    app.listen(port, () =>
+      console.log(`Example app listening at http://localhost:${port}`)
+    );
+  });
