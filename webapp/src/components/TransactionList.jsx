@@ -5,7 +5,11 @@ export default function TransactionList(props) {
   return (
     <div>
       {props.items.map((item, index) => (
-        <TransactionItem item={item} />
+        <TransactionItem
+          key={item._id}
+          item={item}
+          handleDelete={props.handleDelete}
+        />
       ))}
     </div>
   );

@@ -13,10 +13,22 @@ export default function Dashboard() {
     });
   }, []);
 
+  function handleDelete(item) {
+    axios.delete(`/api/transactions/${item._id}`).then((res) => {
+      const newt = transactions.filter((item) => item._id === res._id);
+      setTransactions(newt);
+    });
+  }
+
+  function handleAdd(item) {
+    axios.post('/api/transactions', item).then((res) => {
+      setTransactions([...transactions, res.data]);
+    });
+  }
   return (
     <div>
-      <TransactionForm />
-      <TransactionList items={transactions} />
+      <TransactionForm handleAdd={handleAdd} />
+      <TransactionList items={transactions} handleDelete={handleDelete} />
     </div>
   );
 }
