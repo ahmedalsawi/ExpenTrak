@@ -2,8 +2,8 @@ import React from "react";
 import "./App.css";
 
 import NavBar from "./components/NavBar";
-import Dashboard from "./components/Dashboard";
 
+import Dashboard from "./components/pages/Dashboard";
 import LoginPage from "./components/pages/LoginPage";
 
 import { Route } from "react-router";
