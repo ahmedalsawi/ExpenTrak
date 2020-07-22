@@ -2,8 +2,8 @@ import React from "react";
 
 import moment from "moment";
 
-import Select from "./atoms/Select";
-import SelectMultiple from "./atoms/SelectMultiple";
+import Select from "./utils/Select";
+import SelectMultiple from "./utils/SelectMultiple";
 
 import axios from "axios";
 import { apiURI } from "../services/api";

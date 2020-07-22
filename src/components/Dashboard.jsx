@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import TransactionList from "../TransactionList";
-import TransactionForm from "../TransactionForm";
+import TransactionList from "./TransactionList";
+import TransactionForm from "./TransactionForm";
 
 import axios from "axios";
 
