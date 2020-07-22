@@ -10,6 +10,8 @@ from . import views
 router = routers.DefaultRouter()
 
 router.register('transactions', views.TransactionView)
+router.register('category', views.CategoryView)
+router.register('label', views.LabelView)
 
 urlpatterns = [
     path('', include(router.urls)),

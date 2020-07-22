@@ -15,7 +15,7 @@ export default function Dashboard() {
 
   function handleDelete(item) {
     axios.delete(`/api/transactions/${item.id}/`).then((res) => {
-      const newt = transactions.filter((item1) => item1.id === item.id);
+      const newt = transactions.filter((item1) => item1.id !== item.id);
       setTransactions(newt);
     });
   }
