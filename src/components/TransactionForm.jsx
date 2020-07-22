@@ -4,17 +4,34 @@ import moment from "moment";
 
 import Select from "./atoms/Select";
 import SelectMultiple from "./atoms/SelectMultiple";
+
+import axios from "axios";
+import { apiURI } from "../services/api";
+
 export default class NameForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
+
+    this.initialValue = {
       title: "",
       amount: 0,
       date: moment().format("YYYY-MM-DD"),
-      category: {},
+      category: null,
       labels: [],
     };
+    this.state = this.initialValue;
+    this.label = [];
+    this.category = [];
   }
+
+  componentWillMount = () => {
+    axios.get(apiURI.labelsURI).then((res) => {
+      this.label = res.data;
+    });
+    axios.get(apiURI.categoryURI).then((res) => {
+      this.category = res.data;
+    });
+  };
 
   handleChange = (event) => {
     this.setState({ [event.target.name]: event.target.value });
@@ -25,12 +42,9 @@ export default class NameForm extends React.Component {
 
     // Submit form data to backend
     this.props.handleAdd(this.state);
-    // TODO clear the form on submit
+    // clear the form on submit
+    this.setState(this.initialValue);
   };
-
-  // TODO clean this later
-  category = [{ id: 1, name: "c1" }];
-  label = [{ id: 1, name: "l1" }];
 
   render() {
     return (

@@ -7,7 +7,7 @@ function SelectMultiple({ onChange, options, ...props }) {
     const selected = [];
     for (var opt, j = 0; (opt = opts[j]); j++) {
       if (opt.selected === true) {
-        selected.push(Number(opt.value));
+        selected.push(opt.value);
       }
     }
 
