@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import TransactionList from './TransactionList';
-import TransactionForm from './TransactionForm';
+import React, { useState, useEffect } from "react";
+import TransactionList from "./TransactionList";
+import TransactionForm from "./TransactionForm";
 
-import axios from 'axios';
+import axios from "axios";
 
 export default function Dashboard() {
   const [transactions, setTransactions] = useState([]);
@@ -14,14 +14,14 @@ export default function Dashboard() {
   }, []);
 
   function handleDelete(item) {
-    axios.delete(`/api/transactions/${item._id}`).then((res) => {
-      const newt = transactions.filter((item) => item._id === res._id);
+    axios.delete(`/api/transactions/${item.id}/`).then((res) => {
+      const newt = transactions.filter((item1) => item1.id === item.id);
       setTransactions(newt);
     });
   }
 
   function handleAdd(item) {
-    axios.post('/api/transactions', item).then((res) => {
+    axios.post("/api/transactions/", item).then((res) => {
       setTransactions([...transactions, res.data]);
     });
   }
